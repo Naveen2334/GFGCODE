@@ -1,49 +1,40 @@
 //{ Driver Code Starts
-//Initial template for Java
-
 import java.io.*;
 import java.util.*;
 
-
-// } Driver Code Ends
-//User function template for Java
-
-class Solution
-{
-    public static void sort012(int a[], int n)
-    {
-        // code here 
-        
-        
-        
-        Arrays.sort(a);
-    }
-}
-
-//{ Driver Code Starts.
-
 class GFG {
-    
-    public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine().trim()); //Inputting the testcases
-        while(t-->0){
-            int n = Integer.parseInt(br.readLine().trim());
-            int arr[] = new int[n];
-            String inputLine[] = br.readLine().trim().split(" ");
-            for(int i=0; i<n; i++){
-                arr[i] = Integer.parseInt(inputLine[i]);
+
+        int t = Integer.parseInt(br.readLine());
+
+        while (t-- > 0) {
+            String input = br.readLine();
+            String[] inputArray = input.split("\\s+");
+            ArrayList<Integer> a = new ArrayList<>();
+
+            for (String s : inputArray) {
+                a.add(Integer.parseInt(s));
             }
-            Solution ob=new Solution();
-            ob.sort012(arr, n);
-            StringBuffer str = new StringBuffer();
-            for(int i=0; i<n; i++){
-                str.append(arr[i]+" ");
+
+            Solution ob = new Solution();
+            ob.sort012(a);
+
+            for (int num : a) {
+                System.out.print(num + " ");
             }
-            System.out.println(str);
+            System.out.println();
         }
     }
 }
 
-
 // } Driver Code Ends
+
+
+class Solution {
+    // Function to sort an array of 0s, 1s, and 2s
+    public void sort012(ArrayList<Integer> arr) {
+        Collections.sort(arr);
+        // code here
+    }
+}
