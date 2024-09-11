@@ -1,74 +1,64 @@
 //{ Driver Code Starts
-//Initial Template for Java
+// Initial Template for Java
 
 import java.io.*;
+import java.lang.*;
 import java.util.*;
-class GFG {
-	public static void main (String[] args) {
-	    
-	    //Taking input using class Scanner
-		Scanner sc=new Scanner(System.in);
-		
-		//Taking total count of testcases
-		int t=sc.nextInt();
-		sc.nextLine();
-		while(t-->0)
-		{
-		    
-		    int n,m;
-		    
-		    //taking size of array a
-		    n=sc.nextInt();
-		    
-		    //taking size of array b
-		    m=sc.nextInt();
-		    
-		    //Creating 2 array of size n and m
-		    int a[]=new int[n];
-		    int b[]=new int[m];
-		    
-		    //inserting elements to array a
-		    for(int i=0;i<n;i++)
-		    {
-		        a[i]=sc.nextInt();
-		    }
-		    
-		    //inserting elements to array b
-		    for(int i=0;i<m;i++)
-		    {
-		        b[i]=sc.nextInt();
-		    }
-		    Solution ob=new Solution();
-		    //calling doUnion method and printing the results
-		    System.out.println(ob.doUnion(a,n,b,m));
-		}
-		
-	}
+
+class Main {
+    public static void main(String args[]) throws IOException {
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine().trim());
+
+        while (t-- > 0) {
+            // Reading the first array
+            String line1 = read.readLine().trim();
+            String[] numsStr1 = line1.split(" ");
+            int[] a = new int[numsStr1.length];
+            for (int i = 0; i < numsStr1.length; i++) {
+                a[i] = Integer.parseInt(numsStr1[i]);
+            }
+
+            // Reading the second array
+            String line2 = read.readLine().trim();
+            String[] numsStr2 = line2.split(" ");
+            int[] b = new int[numsStr2.length];
+            for (int i = 0; i < numsStr2.length; i++) {
+                b[i] = Integer.parseInt(numsStr2[i]);
+            }
+
+            // Creating an instance of the Solution class
+            Solution ob = new Solution();
+
+            // Calling doUnion method and printing the result
+            System.out.println(ob.doUnion(a, b));
+        }
+    }
 }
+
 // } Driver Code Ends
 
 
-//User function Template for Java
+// User function Template for Java
 
-class Solution{
-    public static int doUnion(int a[], int n, int b[], int m) 
-    {
-        //Your code here
-        HashSet<Integer> hset =  new HashSet<>();
-        for(int i=0;i<a.length;i++){
-            if(!hset.contains(a[i])){
-                hset.add(a[i]);
-            }
+class Solution {
+    public static int doUnion(int arr1[], int arr2[]) {
+        Set<Integer> set =  new HashSet<>();
+        
+        for(int num : arr1){
+            set.add(num);
         }
-         for(int j=0;j<b.length;j++){
-            if(!hset.contains(b[j])){
-                hset.add(b[j]);
-            }
+        for( int num : arr2){
+            set.add(num);
         }
+        int result[] =  new int[set.size()];
+        int index = 0;
         
-            
-        
-        return hset.size();
-        
+        for(int num : set){
+            result[index] = num;
+            index++;
+        }
+        return result.length;
+        // Your code here
     }
 }
